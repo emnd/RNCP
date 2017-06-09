@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+	<html ng-app="movie">
+		<head>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+			<title>The Movie DB API</title>
+			<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+			<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+			<link rel="stylesheet" type="text/css" href="css/forms.css" />
+			<!-- favicon -->
+			<link rel="apple-touch-icon" sizes="57x57" href="image/apple-icon-57x57.png">
+			<link rel="apple-touch-icon" sizes="60x60" href="image/apple-icon-60x60.png">
+			<link rel="apple-touch-icon" sizes="72x72" href="image/apple-icon-72x72.png">
+			<link rel="apple-touch-icon" sizes="76x76" href="image/apple-icon-76x76.png">
+			<link rel="apple-touch-icon" sizes="114x114" href="image/apple-icon-114x114.png">
+			<link rel="apple-touch-icon" sizes="120x120" href="image/apple-icon-120x120.png">
+			<link rel="apple-touch-icon" sizes="144x144" href="image/apple-icon-144x144.png">
+			<link rel="apple-touch-icon" sizes="152x152" href="image/apple-icon-152x152.png">
+			<link rel="apple-touch-icon" sizes="180x180" href="image/apple-icon-180x180.png">
+			<link rel="icon" type="image/png" sizes="192x192"  href="image/android-icon-192x192.png">
+			<link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+			<link rel="icon" type="image/png" sizes="96x96" href="image/favicon-96x96.png">
+			<link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+			<link rel="manifest" href="image/manifest.json"> 
+			<meta name="msapplication-TileColor" content="#ffffff">
+			<meta name="msapplication-TileImage" content="image/ms-icon-144x144.png">
+			<meta name="theme-color" content="#ffffff">
+			<!-- favicon -->
+			<script type="text/javascript" src="js/angular.min.js"></script>
+			<script type="text/javascript" src="js/angular-translate.min.js"></script>
+			<script type="text/javascript" src="js/angular-translate-loader-static-files.min.js"></script>
+			<script type="text/javascript" src="js/config.js" charset="utf-8"></script>
+			<script type="text/javascript" src="js/controllers/searchCtrl.js"	charset="utf-8"></script>
+			<script type="text/javascript" src="js/controllers/now.js"	charset="utf-8"></script>
+			<script type="text/javascript" src="js/controllers/actor.js"	charset="utf-8"></script>
+			<script type="text/javascript" src="js/controllers/genre.js"	charset="utf-8"></script>
+			<script type="text/javascript" src="js/controllers/title.js"	charset="utf-8"></script>
+			<script type="text/javascript" src="js/controllers/videotheque.js"	charset="utf-8"></script>
+			<script type="text/javascript" src="js/app.js" charset="utf-8"></script>
+			
+		</head>
+		<body>
+				<div ng-controller="TranslateController as translateCtrl">
+					<button ng-click="translateCtrl.changeLanguage('en')" translate="BUTTON_EN"></button>
+					<button ng-click="translateCtrl.changeLanguage('fr')" translate="BUTTON_FR"></button>
+				</div>
+			
+				<section ng-controller="PanelController as panel">
+					<ul class="nav nav-pills">
+						<li ng-class="{active:panel.isSet('now')}"><a href ng-click="panel.setTab('now')">Films en Salle</a></li>
+						<li ng-class="{active:panel.isSet('actor')}"><a href ng-click="panel.setTab('actor')">Acteur</a></li>
+						<li ng-class="{active:panel.isSet('genre')}"><a href ng-click="panel.setTab('genre')">Genre</a></li>
+						<li ng-class="{active:panel.isSet('title')}"><a href ng-click="panel.setTab('title')">Titre</a></li>
+						<li ng-class="{active:panel.isSet('videotheque')}"><a href ng-click="panel.setTab('videotheque')">Vidéothèque</a></li>
+					</ul>
+			
+					<now-playing ng-show="panel.isSet('now')"></now-playing>
+					<actor ng-show="panel.isSet('actor')"> </actor>
+					<genre ng-show="panel.isSet('genre')"> </genre>
+					<title-movie ng-show="panel.isSet('title')"> </title-movie>
+					<videotheque ng-show="panel.isSet('videotheque')"> </videotheque>
+		
+				</section>
+				
+		</body>
+	</html>

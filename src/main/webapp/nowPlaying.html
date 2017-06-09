@@ -1,0 +1,38 @@
+ <meta charset="UTF-8">
+	<div class="container">
+		<div class="table-responsive" ng-show="nowCtrl.details == null">
+			<table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>Titre</th>
+			        <th>En Salle</th>
+			        <th>Poster</th>
+			        <th>Résumé</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr ng-repeat="response in nowCtrl.responses">
+			        <td><h4>{{response.title}}</h4></td>
+			        <td><h4>{{response.release_date|date:'dd/MM/yyyy'}}</h4></td>
+			        <td><img class="img-responsive" ng-src="{{response.poster_path}}" alt="poster du film" /></td>
+			        <td>{{response.overview}}</td>
+			        <td><button class="btn btn-primary" ng-click="nowCtrl.getDetail(response.id)">Détails</button></td>
+			      </tr>
+			    </tbody>
+			 </table>
+		</div>
+		<!--  -->		
+		<div  ng-show="nowCtrl.details != null">
+			<div class="row">
+				 <div class="col-9"><h2>{{nowCtrl.title[0]}}&nbsp;&nbsp; <button class="btn btn-primary" ng-click="nowCtrl.addVideotheque(nowCtrl.id)">Ajouter à la videothèque</button></h2></div>
+				 <div class="col-4"><img ng-src="{{nowCtrl.poster[0]}}" /><p>{{nowCtrl.overview[0]}}</p></div>
+				 <div class="col-6">
+				 	Genres : <b ng-repeat="genre in nowCtrl.genres | limitTo:3">{{genre}}, </b><br/>
+				 	Acteurs :<b ng-repeat="actor in nowCtrl.actors | limitTo:5">{{actor}}, </b><br/>
+				 	<div class="col-sm-4"><button class="btn btn-primary" ng-click="nowCtrl.getRetour()">Retour</button></div>
+				 </div>
+			</div>
+		</div>
+		<!--  -->
+		
+  </div>

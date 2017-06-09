@@ -1,0 +1,12 @@
+.ng-invalid.ng-dirty{
+  border-color: red;
+}
+
+.ng-valid.ng-dirty{
+  border-color: green;
+}
+
+#ng-src{
+	height:0.5%;
+	width:0.5%;
+}

@@ -1,0 +1,39 @@
+ <meta charset="UTF-8">
+	<div class="container">
+		<div class="table-responsive" ng-show="videothequeCtrl.details == null">
+			<table class="table table-striped">
+			    <thead>
+			      <tr>
+			        <th>Titre</th>
+			        <th>En Salle</th>
+			        <th>Poster</th>
+			        <th>Résumé</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr ng-repeat="response in videothequeCtrl.responses">
+			        <td><h4>{{response.title}}</h4></td>
+			        <td><h4>{{response.release_date|date:'dd/MM/yyyy'}}</h4></td>
+			        <td><img class="img-responsive" ng-src="{{response.poster_path}}" alt="poster du film" /></td>
+			        <td>{{response.overview}}</td>
+			        <td><button class="btn btn-primary" ng-click="videothequeCtrl.getDetail(response.id)">Détails</button></td>
+			        <td><button class="btn btn-primary" ng-click="videothequeCtrl.deleteVideotheque(response.id)">Supprimer</button></td>
+			      </tr>
+			    </tbody>
+			 </table>
+		</div>
+		<!--  -->		
+		<div  ng-show="videothequeCtrl.details != null">
+			<div class="row">
+				 <div class="col-9"><h2>{{videothequeCtrl.title[0]}}&nbsp;&nbsp;</h2></div>
+				 <div class="col-4"><img ng-src="{{videothequeCtrl.poster[0]}}" /><p>{{videothequeCtrl.overview[0]}}</p></div>
+				 <div class="col-6">
+				 	Genres : <b ng-repeat="genre in videothequeCtrl.genres | limitTo:3">{{genre}}, </b><br/>
+				 	Acteurs :<b ng-repeat="actor in videothequeCtrl.actors | limitTo:5">{{actor}}, </b><br/>
+				 	<div class="col-sm-4"><button class="btn btn-primary" ng-click="videothequeCtrl.getRetour()">Retour</button></div>
+				 </div>
+			</div>
+		</div>
+		<!--  -->
+		
+  </div>
